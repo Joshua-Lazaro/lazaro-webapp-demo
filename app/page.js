@@ -1,20 +1,24 @@
+import { useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br to-gray-700"
+    style={{ backgroundImage: "linear-gradient(to bottom right, #252b46, #374151)" }}
+    >
+
       {/* Navigation Menu */}
-      <nav className="bg-white shadow-lg">
+      <nav className="sticky top-0 bg-gray-800 bg-opacity-70 backdrop-blur-md shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <h1 className="text-2xl font-bold text-indigo-600">TailwindDemo</h1>
+            <div className="flex items-center p-4 rounded-lg">
+              <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">Tailwind CSS Demo</h1>
             </div>
             <div className="hidden md:flex space-x-8">
-              <a href="#buttons" className="text-gray-700 hover:text-indigo-600 transition">Buttons</a>
-              <a href="#colors" className="text-gray-700 hover:text-indigo-600 transition">Colors</a>
-              <a href="#layouts" className="text-gray-700 hover:text-indigo-600 transition">Layouts</a>
-              <a href="#text" className="text-gray-700 hover:text-indigo-600 transition">Typography</a>
+              <a href="#buttons" className="text-white-700 hover:text-indigo-600 transition">Buttons</a>
+              <a href="#colors" className="text-white-700 hover:text-indigo-600 transition">Colors</a>
+              <a href="#layouts" className="text-white-700 hover:text-indigo-600 transition">Layouts</a>
+              <a href="#text" className="text-white-700 hover:text-indigo-600 transition">Typography</a>
             </div>
             <button className="md:hidden">
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -27,40 +31,62 @@ export default function Home() {
 
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h1 className="text-5xl font-extrabold text-gray-900 mb-4">
+        <div className="text-center bg-white rounded-lg p-6 pt-9 mb-16">
+          <h1 className="text-5xl font-extrabold text-gray-900 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
             Tailwind CSS Components
           </h1>
           <p className="text-xl text-gray-600 mb-8">
-            A showcase of beautiful, responsive components built with Tailwind CSS
+            This blog showcases how Tailwind CSS can be used to quickly style a responsive interface using utility classes, without writing custom CSS.
           </p>
         </div>
 
         {/* Buttons Section */}
-        <section id="buttons" className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Buttons</h2>
-          <div className="bg-white rounded-lg shadow-md p-8">
-            <div className="flex flex-wrap gap-4">
-              <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition">
-                Primary Button
-              </button>
-              <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition">
-                Success Button
-              </button>
-              <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition">
-                Danger Button
-              </button>
-              <button className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded transition">
-                Secondary Button
-              </button>
-              <button className="border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-2 px-4 rounded transition">
-                Outline Button
-              </button>
-              <button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-2 px-4 rounded transition">
-                Gradient Button
-              </button>
+        <section id="buttons" className="mb-16 bg-black rounded-lg shadow-md p-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Buttons</h2>
+          <p className="text-white-600 mb-6">
+            Selecting different options updates the button by swapping Tailwind utility classes. 
+            This demonstrates how visual styles are composed from small, reusable utilities.
+          </p>
+          <div className="flex flex-row gap-6">
+            <div className="flex flex-col items-center">
+               {/* Variants */}
+              <h3 className="text-xl font-semibold mb-2">Variants</h3>
+              <div className="flex gap-4 mb-6">
+                <button className="bg-blue-500 text-white px-4 py-2 rounded">Solid</button>
+                <button className="border-2 border-blue-500 text-blue-500 px-4 py-2 rounded">Outline</button>
+                <button className="text-blue-500 px-4 py-2 rounded hover:bg-blue-50">Ghost</button>
+              </div>
+
+              {/* Sizes */}
+              <h3 className="text-xl font-semibold mb-2">Sizes</h3>
+              <div className="flex gap-4 mb-6">
+                <button className="bg-indigo-500 text-white text-sm px-2 py-1 rounded">Small</button>
+                <button className="bg-indigo-500 text-white text-base px-4 py-2 rounded">Medium</button>
+                <button className="bg-indigo-500 text-white text-lg px-6 py-3 rounded">Large</button>
+              </div>
+
+              {/* Rounded */}
+              <h3 className="text-xl font-semibold mb-2">Rounded</h3>
+              <div className="flex gap-4 mb-6">
+                <button className="bg-green-500 text-white px-4 py-2 rounded-none">None</button>
+                <button className="bg-green-500 text-white px-4 py-2 rounded-md">Medium</button>
+                <button className="bg-green-500 text-white px-4 py-2 rounded-full">Full</button>
+              </div>
+
+              {/* Accent Colors */}
+              <h3 className="text-xl font-semibold mb-2">Accent Colors</h3>
+              <div className="flex gap-4">
+                <button className="bg-red-500 text-white px-4 py-2 rounded">Red</button>
+                <button className="bg-yellow-500 text-white px-4 py-2 rounded">Yellow</button>
+                <button className="bg-purple-500 text-white px-4 py-2 rounded">Purple</button>
+              </div>
+
+            </div>
+            <div className="flex flex-col items-center mt-8">
+                {/* text area for when button is pressed */}
             </div>
           </div>
+
         </section>
 
         {/* Colors Section */}

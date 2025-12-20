@@ -462,7 +462,7 @@ export default function Home() {
 
             {/* Live Preview Area */}
             <div
-              className="border-2 border-purple-500 shadow-xl bg-gray-900 rounded-lg p-6 overflow-hidden max-w-lg"
+              className="border-2 border-purple-500 shadow-xl bg-gray-900 rounded-lg p-6 overflow-hidden w-full max-w-lg"
               style={{ width: containerWidth }}
             >
               {/* Grid Layout */}

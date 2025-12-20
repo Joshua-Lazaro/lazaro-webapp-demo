@@ -7,6 +7,8 @@ export default function Home() {
   const [codeSample, setCodeSample] = useState(`Click buttons to see code samples here`);
   const [preview, setPreview] = useState(`Click buttons to see live preview here`);
   const [typographyPreview, setTypographyPreview] = useState(`Click buttons to see live preview here`);
+  const [itemCount, setItemCount] = useState(3);
+  const [containerWidth, setContainerWidth] = useState(530);
 
   return (
     <div className="min-h-screen bg-black">
@@ -23,8 +25,8 @@ export default function Home() {
             <div className="hidden md:flex space-x-8">
               <a href="#buttons" className="text-white-700 hover:text-indigo-600 transition">Buttons</a>
               <a href="#spacing" className="text-white-700 hover:text-indigo-600 transition">Spacing</a>
-              <a href="#layouts" className="text-white-700 hover:text-indigo-600 transition">Layouts</a>
               <a href="#text" className="text-white-700 hover:text-indigo-600 transition">Typography</a>
+              <a href="#layouts" className="text-white-700 hover:text-indigo-600 transition">Layouts</a>
             </div>
             <button className="md:hidden">
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -417,78 +419,93 @@ export default function Home() {
 
         {/* Layouts Section */}
         <section id="layouts" className="px-4 md:px-8 mb-16">
-          <h2 className="text-3xl font-bold text-white mb-6">Layout Examples</h2>
-          
-          {/* Grid Layout */}
-          <div className="bg-white rounded-lg shadow-md p-8 mb-8">
-            <h3 className="text-xl font-bold mb-4">Grid Layout</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div className="bg-gradient-to-br from-blue-400 to-blue-600 text-white p-6 rounded-lg">
-                <h4 className="font-bold text-lg mb-2">Card 1</h4>
-                <p>This is a card in a responsive grid layout.</p>
+          <h2 className="text-3xl font-bold text-white mb-6">Layout Playground</h2>
+          <p className="text-white mb-6">
+            Use the slider to simulate viewport width and the buttons to change how many items are displayed.
+          </p>
+
+          <div className="border-2 border-gray-900 shadow-xl bg-black grid grid-cols-1 md:grid-cols-2 gap-8 p-8 rounded-lg">
+            {/* Controls */}
+            <div className="flex flex-col items-center space-y-6">
+              {/* Slider */}
+              <div className="w-full">
+                <h3 className="text-xl font-semibold mb-2">Preview Area Width</h3>
+                <input
+                  type="range"
+                  min="320"
+                  max="510"
+                  value={containerWidth}
+                  onChange={(e) => setContainerWidth(Number(e.target.value))}
+                  className="w-full"
+                />
+                <p className="text-gray-300 mt-2">
+                  Current width: <span className="font-bold">{containerWidth}px</span>
+                </p>
               </div>
-              <div className="bg-gradient-to-br from-green-400 to-green-600 text-white p-6 rounded-lg">
-                <h4 className="font-bold text-lg mb-2">Card 2</h4>
-                <p>Grid automatically adjusts to screen size.</p>
-              </div>
-              <div className="bg-gradient-to-br from-purple-400 to-purple-600 text-white p-6 rounded-lg">
-                <h4 className="font-bold text-lg mb-2">Card 3</h4>
-                <p>Three columns on large screens, stacked on mobile.</p>
+
+              {/* Item Count Buttons */}
+              <div className="w-full">
+                <h3 className="text-xl font-semibold mb-2">Number of Items</h3>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {[2, 3, 4, 5, 6].map((count) => (
+                    <button
+                      key={count}
+                      className="bg-purple-500 text-white px-4 py-2 rounded"
+                      onClick={() => setItemCount(count)}
+                    >
+                      {count}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Flex Layout */}
-          <div className="bg-white rounded-lg shadow-md p-8">
-            <h3 className="text-xl font-bold mb-4">Flex Layout</h3>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <div className="bg-red-500 text-white p-4 rounded-lg flex-shrink-0">Item 1</div>
-              <div className="bg-orange-500 text-white p-4 rounded-lg flex-shrink-0">Item 2</div>
-              <div className="bg-yellow-500 text-white p-4 rounded-lg flex-shrink-0">Item 3</div>
-              <div className="bg-teal-500 text-white p-4 rounded-lg flex-shrink-0">Item 4</div>
+            {/* Live Preview Area */}
+            <div
+              className="border-2 border-purple-500 shadow-xl bg-gray-900 rounded-lg p-6 overflow-hidden max-w-lg"
+              style={{ width: containerWidth }}
+            >
+              {/* Grid Layout */}
+              <div className="mb-8">
+                <h3 className="text-xl font-bold mb-4">Grid Layout</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {Array.from({ length: itemCount }, (_, i) => (
+                    <div
+                      key={i}
+                      className="bg-gradient-to-br from-blue-400 to-blue-600 text-white p-6 rounded-lg"
+                    >
+                      <h4 className="font-bold text-lg mb-2">Card {i + 1}</h4>
+                      <p>This is card {i + 1} in the layout.</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Flex Layout */}
+              <div>
+                <h3 className="text-xl font-bold mb-4">Flex Layout</h3>
+                <div className="flex flex-wrap gap-4 justify-center">
+                  {Array.from({ length: itemCount }, (_, i) => (
+                    <div
+                      key={i}
+                      className="bg-red-500 text-white p-4 rounded-lg flex-shrink-0"
+                    >
+                      Item {i + 1}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Image Section */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Images</h2>
-          <div className="bg-white rounded-lg shadow-md p-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <img 
-                  src="https://via.placeholder.com/400x300/3B82F6/FFFFFF?text=Image+1" 
-                  alt="Placeholder" 
-                  className="w-full rounded-lg shadow-md"
-                />
-                <p className="mt-2 text-center font-medium">Rounded Image</p>
-              </div>
-              <div>
-                <img 
-                  src="https://via.placeholder.com/400x300/10B981/FFFFFF?text=Image+2" 
-                  alt="Placeholder" 
-                  className="w-full rounded-full shadow-md"
-                />
-                <p className="mt-2 text-center font-medium">Circular Image</p>
-              </div>
-              <div>
-                <img 
-                  src="https://via.placeholder.com/400x300/8B5CF6/FFFFFF?text=Image+3" 
-                  alt="Placeholder" 
-                  className="w-full shadow-2xl"
-                />
-                <p className="mt-2 text-center font-medium">Shadow Image</p>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-white py-8">
+      <footer className="bg-black border-t-1 border-gray-800 text-white py-8">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <p className="text-lg">Built with Next.js and Tailwind CSS</p>
-          <p className="text-sm text-gray-400 mt-2">A beginner-friendly tutorial project</p>
+          <p className="text-sm text-gray-400 mt-2">Joshua Lazaro A222 2025</p>
         </div>
       </footer>
     </div>

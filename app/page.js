@@ -1,21 +1,27 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
+  const [codeSample, setCodeSample] = useState(
+  `<button class="bg-blue-500 text-white px-4 py-2 rounded">Solid Button</button>`
+  );
+  const [preview, setPreview] = useState(null);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br to-gray-700"
-    style={{ backgroundImage: "linear-gradient(to bottom right, #252b46, #374151)" }}
-    >
+    <div className="min-h-screen bg-black">
 
       {/* Navigation Menu */}
-      <nav className="sticky top-0 bg-gray-800 bg-opacity-70 backdrop-blur-md shadow-lg">
+      <nav className="sticky top-0 bg-black opacity-100 border-b-1 border-gray-900 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center p-4 rounded-lg">
-              <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">Tailwind CSS Demo</h1>
+              <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">Tailwind CSS CheatSheet</h1>
             </div>
             <div className="hidden md:flex space-x-8">
               <a href="#buttons" className="text-white-700 hover:text-indigo-600 transition">Buttons</a>
-              <a href="#colors" className="text-white-700 hover:text-indigo-600 transition">Colors</a>
+              <a href="#spacing" className="text-white-700 hover:text-indigo-600 transition">Spacing</a>
               <a href="#layouts" className="text-white-700 hover:text-indigo-600 transition">Layouts</a>
               <a href="#text" className="text-white-700 hover:text-indigo-600 transition">Typography</a>
             </div>
@@ -30,96 +36,295 @@ export default function Home() {
 
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-        <div className="text-center bg-white rounded-lg p-6 pt-9 mb-16">
+        <div className="text-center bg-black border-2 border-gray-900 rounded-lg p-6 pt-9 mb-16">
           <h1 className="text-5xl font-extrabold text-gray-900 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-            Tailwind CSS Components
+            Tailwind CSS CheatSheet
           </h1>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-white mb-8">
             This blog showcases how Tailwind CSS can be used to quickly style a responsive interface using utility classes, without writing custom CSS.
           </p>
         </div>
 
         {/* Buttons Section */}
-        <section id="buttons" className="mb-16 bg-black rounded-lg shadow-md p-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Buttons</h2>
+        <section id="buttons" className="mb-16">
+          <h2 className="text-3xl font-bold text-white mb-4">Buttons</h2>
           <p className="text-white-600 mb-6">
             Selecting different options updates the button by swapping Tailwind utility classes. 
             This demonstrates how visual styles are composed from small, reusable utilities.
           </p>
-          <div className="flex flex-row gap-6">
+          <div className="border-2 border-gray-900 shadow-xl bg-black grid grid-cols-1 mb-16 md:grid-cols-2 gap-8 p-8 rounded-lg">
             <div className="flex flex-col items-center">
                {/* Variants */}
               <h3 className="text-xl font-semibold mb-2">Variants</h3>
               <div className="flex gap-4 mb-6">
-                <button className="bg-blue-500 text-white px-4 py-2 rounded">Solid</button>
-                <button className="border-2 border-blue-500 text-blue-500 px-4 py-2 rounded">Outline</button>
-                <button className="text-blue-500 px-4 py-2 rounded hover:bg-blue-50">Ghost</button>
-              </div>
+                  <button className="bg-blue-500 text-white px-4 py-2 rounded"
+                    onClick={() =>
+                      setCodeSample(`<button className="bg-blue-500 text-white px-4 py-2 rounded">\nSolid Button\n</button>`)
+                    }
+                  >
+                    Solid
+                  </button>
+
+                  <button
+                    className="border-2 border-blue-500 text-blue-500 px-4 py-2 rounded"
+                    onClick={() =>
+                      setCodeSample(`<button className="border-2 border-blue-500 text-blue-500 px-4 py-2 rounded">\nOutline Button\n</button>`)
+                    }
+                  >
+                    Outline
+                  </button>
+
+                  <button
+                    className="text-blue-500 px-4 py-2 rounded hover:bg-blue-50"
+                    onClick={() =>
+                      setCodeSample(`<button className="text-blue-500 px-4 py-2 rounded hover:bg-blue-50">\nGhost Button\n</button>`)
+                    }
+                  >
+                    Ghost
+                  </button>
+            </div>
 
               {/* Sizes */}
               <h3 className="text-xl font-semibold mb-2">Sizes</h3>
               <div className="flex gap-4 mb-6">
-                <button className="bg-indigo-500 text-white text-sm px-2 py-1 rounded">Small</button>
-                <button className="bg-indigo-500 text-white text-base px-4 py-2 rounded">Medium</button>
-                <button className="bg-indigo-500 text-white text-lg px-6 py-3 rounded">Large</button>
+                <button
+                  className="bg-indigo-500 text-white text-sm px-2 py-1 rounded"
+                  onClick={() =>
+                    setCodeSample(`<button className="bg-indigo-500 text-white text-sm px-2 py-1 rounded">\nSmall\n</button>`)
+                  }
+                >
+                  Small
+                </button>
+
+                <button
+                  className="bg-indigo-500 text-white text-base px-4 py-2 rounded"
+                  onClick={() =>
+                    setCodeSample(`<button className="bg-indigo-500 text-white text-base px-4 py-2 rounded">\nMedium\n</button>`)
+                  }
+                >
+                  Medium
+                </button>
+
+                <button
+                  className="bg-indigo-500 text-white text-lg px-6 py-3 rounded"
+                  onClick={() =>
+                    setCodeSample(`<button className="bg-indigo-500 text-white text-lg px-6 py-3 rounded">\nLarge\n</button>`)
+                  }
+                >
+                  Large
+                </button>
               </div>
+
 
               {/* Rounded */}
               <h3 className="text-xl font-semibold mb-2">Rounded</h3>
               <div className="flex gap-4 mb-6">
-                <button className="bg-green-500 text-white px-4 py-2 rounded-none">None</button>
-                <button className="bg-green-500 text-white px-4 py-2 rounded-md">Medium</button>
-                <button className="bg-green-500 text-white px-4 py-2 rounded-full">Full</button>
+                <button
+                  className="bg-green-500 text-white px-4 py-2 rounded-none"
+                  onClick={() =>
+                    setCodeSample(`<button className="bg-green-500 text-white px-4 py-2 rounded-none">\nNone\n</button>`)
+                  }
+                >
+                  None
+                </button>
+
+                <button
+                  className="bg-green-500 text-white px-4 py-2 rounded-md"
+                  onClick={() =>
+                    setCodeSample(`<button className="bg-green-500 text-white px-4 py-2 rounded-md">\nMedium\n</button>`)
+                  }
+                >
+                  Medium
+                </button>
+
+                <button
+                  className="bg-green-500 text-white px-4 py-2 rounded-full"
+                  onClick={() =>
+                    setCodeSample(`<button className="bg-green-500 text-white px-4 py-2 rounded-full">\nFull\n</button>`)
+                  }
+                >
+                  Full
+                </button>
               </div>
 
               {/* Accent Colors */}
               <h3 className="text-xl font-semibold mb-2">Accent Colors</h3>
               <div className="flex gap-4">
-                <button className="bg-red-500 text-white px-4 py-2 rounded">Red</button>
-                <button className="bg-yellow-500 text-white px-4 py-2 rounded">Yellow</button>
-                <button className="bg-purple-500 text-white px-4 py-2 rounded">Purple</button>
-              </div>
+                <button
+                  className="bg-red-500 text-white px-4 py-2 rounded"
+                  onClick={() =>
+                    setCodeSample(`<button className="bg-red-500 text-white px-4 py-2 rounded">\nRed\n</button>`)
+                  }
+                >
+                  Red
+                </button>
 
-            </div>
-            <div className="flex flex-col items-center mt-8">
-                {/* text area for when button is pressed */}
+                <button
+                  className="bg-yellow-500 text-white px-4 py-2 rounded"
+                  onClick={() =>
+                    setCodeSample(`<button className="bg-yellow-500 text-white px-4 py-2 rounded">\nYellow\n</button>`)
+                  }
+                >
+                  Yellow
+                </button>
+
+                <button
+                  className="bg-purple-500 text-white px-4 py-2 rounded"
+                  onClick={() =>
+                    setCodeSample(`<button className="bg-purple-500 text-white px-4 py-2 rounded">\nPurple\n</button>`)
+                  }
+                >
+                  Purple
+                </button>
+              </div>
+            </div> {/* end of flex-buttons*/}
+
+              <div className="border-2 border-purple-500 shadow-xl bg-gray-900 rounded-lg p-4 text-sm text-purple-400 overflow-x-auto h-62">
+              <h3 className="text-white font-semibold mb-3">
+                Code Example
+              </h3>
+              <textarea
+                value={codeSample}
+                readOnly
+                className="w-full h-40 bg-gray-900 text-green-400 rounded-md font-mono text-left p-1 overflow-x-auto"
+              ></textarea>
             </div>
           </div>
 
         </section>
 
-        {/* Colors Section */}
-        <section id="colors" className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Color Palette</h2>
-          <div className="bg-white rounded-lg shadow-md p-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-              <div className="text-center">
-                <div className="w-full h-24 bg-red-500 rounded-lg mb-2"></div>
-                <p className="text-sm font-medium">Red</p>
+        {/* Spacing Section */}
+        <section id="spacing" className="mb-16">
+          <h2 className="text-3xl font-bold text-white mb-4">Spacing</h2>
+          <p className="text-white-600 mb-6">
+            Selecting different options updates the spacing by swapping Tailwind utility classes.
+            This demonstrates how margins, padding, and gaps affect layout visually.
+          </p>
+
+          <div className="border-2 border-gray-900 shadow-xl bg-black grid grid-cols-1 md:grid-cols-2 gap-8 p-8 rounded-lg">
+            {/* Controls */}
+            <div className="flex flex-col items-center">
+              {/* Margin */}
+              <h3 className="text-xl font-semibold mb-2">Margin</h3>
+              <div className="flex gap-4 mb-6">
+                <button
+                  className="bg-blue-500 text-white px-4 py-2 rounded"
+                  onClick={() =>
+                    setPreview(
+                      <div className="bg-gray-700 p-4">
+                        <div className="m-2 bg-blue-500 text-white">Box with m-2</div>
+                        <div className="m-2 bg-blue-500 text-white">Another m-2</div>
+                      </div>
+                    )
+                  }
+                >
+                  m-2
+                </button>
+
+                <button
+                  className="bg-blue-500 text-white px-4 py-2 rounded"
+                  onClick={() =>
+                    setPreview(
+                      <div className="bg-gray-700 p-4">
+                        <div className="m-4 bg-blue-500 text-white">Box with m-4</div>
+                        <div className="m-4 bg-blue-500 text-white">Another m-4</div>
+                      </div>
+                    )
+                  }
+                >
+                  m-4
+                </button>
+
+                <button
+                  className="bg-blue-500 text-white px-4 py-2 rounded"
+                  onClick={() =>
+                    setPreview(
+                      <div className="bg-gray-700 p-4">
+                        <div className="m-8 bg-blue-500 text-white">Box with m-8</div>
+                        <div className="m-8 bg-blue-500 text-white">Another m-8</div>
+                      </div>
+                    )
+                  }
+                >
+                  m-8
+                </button>
               </div>
-              <div className="text-center">
-                <div className="w-full h-24 bg-blue-500 rounded-lg mb-2"></div>
-                <p className="text-sm font-medium">Blue</p>
+
+              {/* Padding */}
+              <h3 className="text-xl font-semibold mb-2">Padding</h3>
+              <div className="flex gap-4 mb-6">
+                <button
+                  className="bg-green-500 text-white px-4 py-2 rounded"
+                  onClick={() => setPreview(<div className="p-2 bg-green-500 text-white">Sample text with Small Padding</div>)}
+                >
+                  p-2
+                </button>
+                <button
+                  className="bg-green-500 text-white px-4 py-2 rounded"
+                  onClick={() => setPreview(<div className="p-4 bg-green-500 text-white">Sample text with Medium Padding</div>)}
+                >
+                  p-4
+                </button>
+                <button
+                  className="bg-green-500 text-white px-4 py-2 rounded"
+                  onClick={() => setPreview(<div className="p-8 bg-green-500 text-white">Sample text with Large Padding</div>)}
+                >
+                  p-8
+                </button>
               </div>
-              <div className="text-center">
-                <div className="w-full h-24 bg-green-500 rounded-lg mb-2"></div>
-                <p className="text-sm font-medium">Green</p>
+
+              {/* Gap */}
+              <h3 className="text-xl font-semibold mb-2">Gap</h3>
+              <div className="flex gap-4 mb-6">
+                <button
+                  className="bg-purple-500 text-white px-4 py-2 rounded"
+                  onClick={() =>
+                    setPreview(
+                      <div className="flex gap-2">
+                        <div className="bg-purple-500 text-white px-2">A</div>
+                        <div className="bg-purple-500 text-white px-2">B</div>
+                      </div>
+                    )
+                  }
+                >
+                  gap-2
+                </button>
+                <button
+                  className="bg-purple-500 text-white px-4 py-2 rounded"
+                  onClick={() =>
+                    setPreview(
+                      <div className="flex gap-4">
+                        <div className="bg-purple-500 text-white px-2">A</div>
+                        <div className="bg-purple-500 text-white px-2">B</div>
+                      </div>
+                    )
+                  }
+                >
+                  gap-4
+                </button>
+                <button
+                  className="bg-purple-500 text-white px-4 py-2 rounded"
+                  onClick={() =>
+                    setPreview(
+                      <div className="flex gap-8">
+                        <div className="bg-purple-500 text-white px-2">A</div>
+                        <div className="bg-purple-500 text-white px-2">B</div>
+                      </div>
+                    )
+                  }
+                >
+                  gap-8
+                </button>
               </div>
-              <div className="text-center">
-                <div className="w-full h-24 bg-yellow-500 rounded-lg mb-2"></div>
-                <p className="text-sm font-medium">Yellow</p>
-              </div>
-              <div className="text-center">
-                <div className="w-full h-24 bg-purple-500 rounded-lg mb-2"></div>
-                <p className="text-sm font-medium">Purple</p>
-              </div>
-              <div className="text-center">
-                <div className="w-full h-24 bg-pink-500 rounded-lg mb-2"></div>
-                <p className="text-sm font-medium">Pink</p>
-              </div>
+            </div>
+
+            {/* Live Preview Area */}
+            <div className="border-2 border-purple-500 shadow-xl bg-gray-900 rounded-lg p-4 flex items-center justify-center h-62">
+              {preview}
             </div>
           </div>
         </section>
+
 
         {/* Typography Section */}
         <section id="text" className="mb-16">

@@ -4,10 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
-  const [codeSample, setCodeSample] = useState(
-  `<button class="bg-blue-500 text-white px-4 py-2 rounded">Solid Button</button>`
-  );
-  const [preview, setPreview] = useState(null);
+  const [codeSample, setCodeSample] = useState(`Click buttons to see code samples here`);
+  const [preview, setPreview] = useState(`Click buttons to see live preview here`);
+  const [typographyPreview, setTypographyPreview] = useState(`Click buttons to see live preview here`);
 
   return (
     <div className="min-h-screen bg-black">
@@ -17,7 +16,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center p-4 rounded-lg">
-              <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">Tailwind CSS CheatSheet</h1>
+              <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+                <a href="#hero"> Tailwind CSS CheatSheet</a>
+                </h1>
             </div>
             <div className="hidden md:flex space-x-8">
               <a href="#buttons" className="text-white-700 hover:text-indigo-600 transition">Buttons</a>
@@ -35,7 +36,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
+      <div id="hero" className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div className="text-center bg-black border-2 border-gray-900 rounded-lg p-6 pt-9 mb-16">
           <h1 className="text-5xl font-extrabold text-gray-900 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
             Tailwind CSS CheatSheet
@@ -46,7 +47,7 @@ export default function Home() {
         </div>
 
         {/* Buttons Section */}
-        <section id="buttons" className="mb-16">
+        <section id="buttons" className="px-4 md:px-8 mb-16">
           <h2 className="text-3xl font-bold text-white mb-4">Buttons</h2>
           <p className="text-white-600 mb-6">
             Selecting different options updates the button by swapping Tailwind utility classes. 
@@ -147,36 +148,6 @@ export default function Home() {
                 </button>
               </div>
 
-              {/* Accent Colors */}
-              <h3 className="text-xl font-semibold mb-2">Accent Colors</h3>
-              <div className="flex gap-4">
-                <button
-                  className="bg-red-500 text-white px-4 py-2 rounded"
-                  onClick={() =>
-                    setCodeSample(`<button className="bg-red-500 text-white px-4 py-2 rounded">\nRed\n</button>`)
-                  }
-                >
-                  Red
-                </button>
-
-                <button
-                  className="bg-yellow-500 text-white px-4 py-2 rounded"
-                  onClick={() =>
-                    setCodeSample(`<button className="bg-yellow-500 text-white px-4 py-2 rounded">\nYellow\n</button>`)
-                  }
-                >
-                  Yellow
-                </button>
-
-                <button
-                  className="bg-purple-500 text-white px-4 py-2 rounded"
-                  onClick={() =>
-                    setCodeSample(`<button className="bg-purple-500 text-white px-4 py-2 rounded">\nPurple\n</button>`)
-                  }
-                >
-                  Purple
-                </button>
-              </div>
             </div> {/* end of flex-buttons*/}
 
               <div className="border-2 border-purple-500 shadow-xl bg-gray-900 rounded-lg p-4 text-sm text-purple-400 overflow-x-auto h-62">
@@ -194,7 +165,7 @@ export default function Home() {
         </section>
 
         {/* Spacing Section */}
-        <section id="spacing" className="mb-16">
+        <section id="spacing" className="px-4 md:px-8 mb-16">
           <h2 className="text-3xl font-bold text-white mb-4">Spacing</h2>
           <p className="text-white-600 mb-6">
             Selecting different options updates the spacing by swapping Tailwind utility classes.
@@ -319,32 +290,134 @@ export default function Home() {
             </div>
 
             {/* Live Preview Area */}
-            <div className="border-2 border-purple-500 shadow-xl bg-gray-900 rounded-lg p-4 flex items-center justify-center h-62">
-              {preview}
+            <div className="border-2 border-purple-500 shadow-xl bg-gray-900 rounded-lg p-4 h-62">
+              <h3 className="text-white font-semibold mb-3">
+                Live Preview
+              </h3>
+              <div className="flex items-center justify-center text-green-400 h-42">
+                {preview}
+              </div>
             </div>
           </div>
         </section>
 
 
         {/* Typography Section */}
-        <section id="text" className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Typography</h2>
-          <div className="bg-white rounded-lg shadow-md p-8 space-y-4">
-            <h1 className="text-5xl font-bold text-gray-900">Heading 1 - Extra Large</h1>
-            <h2 className="text-4xl font-bold text-gray-900">Heading 2 - Large</h2>
-            <h3 className="text-3xl font-bold text-gray-900">Heading 3 - Medium</h3>
-            <p className="text-xl text-gray-700">This is a large paragraph with text-xl class.</p>
-            <p className="text-base text-gray-600">This is a regular paragraph with text-base class.</p>
-            <p className="text-sm text-gray-500">This is small text with text-sm class.</p>
-            <p className="font-bold text-gray-900">This is bold text.</p>
-            <p className="italic text-gray-700">This is italic text.</p>
-            <p className="underline text-blue-600">This is underlined text.</p>
+        <section id="text" className="px-4 md:px-8 mb-16">
+            <h2 className="text-3xl font-bold text-white mb-6">Typography</h2>
+            <p className="text-white mb-6">
+              Selecting different options updates the preview by swapping Tailwind typography classes.
+              This demonstrates how text styles are composed from small, reusable utilities.
+            </p>
+
+          <div className="border-2 border-gray-900 shadow-xl bg-black grid grid-cols-1 md:grid-cols-2 gap-8 p-8 rounded-lg">
+              {/* Controls */}
+              <div className="flex flex-col items-center space-y-6">
+                {/* Headings */}
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">Headings</h3>
+                  <div className="flex gap-4 mb-4">
+                    <button
+                      className="bg-blue-500 text-white px-4 py-2 rounded"
+                      onClick={() =>
+                        setTypographyPreview(<h1 className="text-5xl font-bold text-white">Heading 1 - Extra Large</h1>)
+                      }
+                    >
+                      H1
+                    </button>
+                    <button
+                      className="bg-blue-500 text-white px-4 py-2 rounded"
+                      onClick={() =>
+                        setTypographyPreview(<h2 className="text-4xl font-bold text-white">Heading 2 - Large</h2>)
+                      }
+                    >
+                      H2
+                    </button>
+                    <button
+                      className="bg-blue-500 text-white px-4 py-2 rounded"
+                      onClick={() =>
+                        setTypographyPreview(<h3 className="text-3xl font-bold text-white">Heading 3 - Medium</h3>)
+                      }
+                    >
+                      H3
+                    </button>
+                  </div>
+                </div>
+
+                {/* Paragraph Sizes */}
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">Paragraph Sizes</h3>
+                  <div className="flex gap-4 mb-4">
+                    <button
+                      className="bg-green-500 text-white px-4 py-2 rounded"
+                      onClick={() =>
+                        setTypographyPreview(<p className="text-xl text-white">This is a large paragraph (text-xl).</p>)
+                      }
+                    >
+                      text-xl
+                    </button>
+                    <button
+                      className="bg-green-500 text-white px-4 py-2 rounded"
+                      onClick={() =>
+                        setTypographyPreview(<p className="text-base text-white">This is a regular paragraph (text-base).</p>)
+                      }
+                    >
+                      text-base
+                    </button>
+                    <button
+                      className="bg-green-500 text-white px-4 py-2 rounded"
+                      onClick={() =>
+                        setTypographyPreview(<p className="text-sm text-white">This is small text (text-sm).</p>)
+                      }
+                    >
+                      text-sm
+                    </button>
+                  </div>
+                </div>
+
+                {/* Font Styles */}
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">Font Styles</h3>
+                  <div className="flex gap-4 mb-4">
+                    <button
+                      className="bg-purple-500 text-white px-4 py-2 rounded"
+                      onClick={() =>
+                        setTypographyPreview(<p className="font-bold text-white">This is bold text.</p>)
+                      }
+                    >
+                      Bold
+                    </button>
+                    <button
+                      className="bg-purple-500 text-white px-4 py-2 rounded"
+                      onClick={() =>
+                        setTypographyPreview(<p className="italic text-white">This is italic text.</p>)
+                      }
+                    >
+                      Italic
+                    </button>
+                    <button
+                      className="bg-purple-500 text-white px-4 py-2 rounded"
+                      onClick={() =>
+                        setTypographyPreview(<p className="underline text-blue-600">This is underlined text.</p>)
+                      }
+                    >
+                      Underline
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            {/* Live Preview Area */}
+            <div className="border-2 border-purple-500 shadow-xl bg-gray-900 rounded-lg p-6 flex items-center justify-center h-62">
+              {typographyPreview}
+            </div>
           </div>
+
         </section>
 
         {/* Layouts Section */}
-        <section id="layouts" className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Layout Examples</h2>
+        <section id="layouts" className="px-4 md:px-8 mb-16">
+          <h2 className="text-3xl font-bold text-white mb-6">Layout Examples</h2>
           
           {/* Grid Layout */}
           <div className="bg-white rounded-lg shadow-md p-8 mb-8">

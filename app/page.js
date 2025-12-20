@@ -462,8 +462,8 @@ export default function Home() {
 
             {/* Live Preview Area */}
             <div
-              className="border-2 border-purple-500 shadow-xl bg-gray-900 rounded-lg p-6 overflow-hidden w-full max-w-lg"
-              style={{ width: containerWidth }}
+              className="border-2 border-purple-500 shadow-xl bg-gray-900 rounded-lg p-6 overflow-hidden w-full max-w-full md:max-w-lg"
+              style={{ width: Math.min(containerWidth, 510) }} // clamp width to avoid overflow
             >
               {/* Grid Layout */}
               <div className="mb-8">
@@ -498,6 +498,7 @@ export default function Home() {
             </div>
           </div>
         </section>
+
 
       </div>
 
